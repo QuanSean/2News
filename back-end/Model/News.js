@@ -3,6 +3,7 @@ let Schema = mongoose.Schema,
 ObjectId = Schema.ObjectId;
 const PostSchema = mongoose.Schema({
     soure:Number,
+    sourename:String,
     category:Number,
     type:Number,
     title:String,

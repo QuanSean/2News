@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import Menu from './Menu';
-import SingleNews from './SingleNews';
-import HotNews from './HotNews';
-import NewNews from './NewNews';
+import Menu from '../Menu';
+import SingleNews from '../SingleNews';
+import HotNews from '../HotNews';
+import NewNews from '../NewNews';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import './style.scss'
-export default class Index extends Component {
+export default class Detail extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
@@ -92,12 +91,7 @@ export default class Index extends Component {
                     <SingleNews sourename={item.sourename} image={item.image} link={item.link} title={item.title}/>
                   )
                 })
-              ):(
-                <div className="wrapper">
-                  <div className="card-loader card-loader--tabs" />
-                </div>
-
-              )
+              ):null
             }
 
 
@@ -121,12 +115,7 @@ export default class Index extends Component {
                     <SingleNews sourename={item.sourename}  image={item.image} link={item.link} title={item.title}/>
                   )
                 })
-              ):(
-                <div className="wrapper">
-                  <div className="card-loader card-loader--tabs" />
-                </div>
-
-              )
+              ):null
             }
             
 
@@ -141,47 +130,14 @@ export default class Index extends Component {
   <<<<<<<<<<<<<<<<<<<<< */}
     <div className="mag-posts-content mt-30 mb-30 p-30 box-shadow">
       {/* Trending Now Posts Area */}
-      <div className="trending-now-posts mb-30">
-        {/* Section Title */}
-        <div className="section-heading">
-          <h5>TIN NÓNG</h5>
-        </div>
-        <div className="trending-post-slides " style={{textAlign:"center"}}>
-            {/* Single Trending Post */}
-            {
-              this.state.load?(  
-                <a href={this.state.data[0]['link']}>
-                  <div className="single-trending-post">
-                    <img src={this.state.data[0]["image"]}  alt="" />
-                    <div className="post-content">
-                      {/* <a href="#" className="post-cata">Sports</a> */}
-                      <a href={this.state.data[0]['link']} className="post-title">{this.state.data[0]['title']}</a>
-                    </div>
-                  </div>
-                </a>
 
-
-              ):(
-                <div className="wrapper">
-                  <div className="card-loader card-loader--tabs" />
-                </div>
-
-              )
-             
-
-            }
-
-            {/* Single Trending Post */}
-
-        </div>
-      </div>
  
     
       {/* Sports Videos */}
       <div className="sports-videos-area">
         {/* Section Title */}
         <div className="section-heading">
-          <h5>TIN MỚI</h5>
+          <h5>TIN TỨC</h5>
         </div>
         <div className="sports-videos-slides owl-carousel mb-30">
         </div>
@@ -192,42 +148,7 @@ export default class Index extends Component {
                 return <NewNews sourename={item.sourename}  title={item['title']} image={item['image']} link={item['link']}/>
 
               })
-            ):(
-              <div className='row' style={{width:"100%"}}>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6"> 
-                  <div className="wrapper">
-                    <div className="card-loader card-loader--tabs" />
-                  </div>
-                </div>
-              </div>
-
-
-            )
+            ):null
           }
         </div>
       </div>

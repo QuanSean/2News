@@ -21,89 +21,52 @@ const feedparser = require('feedparser-promised');
 
 const NewsModel = require ('./Model/News')
 
-//hot
-var urlHot="https://thanhnien.vn/rss/home.rss";
-const intervalHot = setInterval(function() {
-    feedparser.parse(urlHot).then(items => { 
-        // var i=0;
-        items.some(function(item,i){
-            let title=""
-            NewsModel.find({hot:true}, (err, result)=>{
-                // title=result[0].title;
-                if (item.title==result[0].title)
-                {
-                    console.log("No")
-                }
-                else
-                {
-                    var data= item.description.split('src="');
-                    var i=data[1].split('"')[0];
-                    var image = i.replace("180", "660");
-                    var newsModel = new NewsModel ({
-                        soure:1,
-                        category:2,
-                        type:1,
-                        title:item.title,
-                        link:item.link,
-                        description:"",
-                        pubDate:item.pubDate,
-                        hot:true,
-                        image:image
-                    })
-                    result[0].hot=false;
-                    result[0].save();
-                    newsModel.save()
-                    console.log("Oke")
-                }
+//Thanh nien
+var thanhnien= require('./GetRss/Thanhnien')
+var thanhnienRss=thanhnien();
+// thanhnien();
+// var url="https://thanhnien.vn/rss/viet-nam.rss";
+// feedparser.parse(url).then(items => { 
+//     items.some(function(item,i){
 
-            })
-            if (i==0)
-            {
-                return true;
-            }
-            console.log (item.title)
-        });
-    });
-      }, 30000);
-//thanhnien
-var url="https://thanhnien.vn/rss/viet-nam.rss";
-const interval = setInterval(function() {
-    feedparser.parse(url).then(items => { 
-        // var i=0;
-        items.some(function(item,i){
-            // data.push(item)
-            var data= item.description.split('src="');
-            var i=data[1].split('"')[0];
-            var image = i.replace("180", "660");
-
-            // console.log(image);
-            var newsModel = new NewsModel ({
-                soure:1,
-                category:2,
-                type:1,
-                title:item.title,
-                link:item.link,
-                description:item.description,
-                pubDate:item.pubDate,
-                image:image,
-                hot:false
-            })
-            newsModel.save()
-            // newsModel.save();
-            if (i==5)
-            {
-                return true;
-            }
-            console.log(newsModel)
+//                 var data= item.description.split('src="');
+//                 var im=data[1].split('"')[0];
+//                 var image = im.replace("180", "660");
+    
+//                 // console.log(image);
+//                 var newsModel = new NewsModel ({
+//                     soure:1,
+//                     sourename: "Thanh niên",
+//                     category:3,
+//                     type:1,
+//                     title:item.title,
+//                     link:item.link,
+//                     description:item.description,
+//                     pubDate:item.pubDate,
+//                     image:image,
+//                     hot:false
+//                 })
+//                 newsModel.save()
+//                 console.log(item.title)                                     
             
-        });
-    });
-  }, 90000);
-//   clearInterval(interval);
- 
+
+
+//         // data.push(item)
+       
+//         // newsModel.save()
+//         // newsModel.save();
+//         if (i==5)
+//         {
+//             return true;
+//         }
+//         // console.log(i)
+        
+//     });
+// });
+
 
 mongoose.connect(
-    "mongodb+srv://quansean1:150598bd!@2-news-p0npb.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://quansean1:150598bd!@2-news-p0npb.mongodb.net/data?retryWrites=true&w=majority",
     {   useNewUrlParser: true,
         useUnifiedTopology: true },
     (err, success) => {

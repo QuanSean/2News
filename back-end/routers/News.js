@@ -5,7 +5,7 @@ const News= require('../Model/News')
 const NewsMoel= require('../Model/News')
 router
 .get('/', (req, res)=>{
-    NewsMoel.find({hot:true},(err, result)=>{
+    NewsMoel.find({hot:true,category:1},(err, result)=>{
         res.json(result)
     })
 })
@@ -36,6 +36,48 @@ router
 
     })
 })
+.get('/thoisuhome',(req,res)=>{
+    NewsMoel.find({category:3},(err, result)=>{
+        var data= result.sort(function(a,b){
+            var c = new Date(a.pubDate);
+            var d = new Date(b.pubDate);
+            return d-c;
+            });
+        var datas=[]
+        for (i=0;i<data.length;i++)
+        {
+            datas.push(data[i]);
+            if (i==4)
+            {
+                break;
+            }
+        }
+       res.json(datas)
+    })
+
+})
+.get('/thethaohome',(req,res)=>{
+    NewsMoel.find({category:6},(err, result)=>{
+        var data= result.sort(function(a,b){
+            var c = new Date(a.pubDate);
+            var d = new Date(b.pubDate);
+            return d-c;
+            });
+        var datas=[]
+        for (i=0;i<data.length;i++)
+        {
+            datas.push(data[i]);
+            if (i==4)
+            {
+                break;
+            }
+        }
+       res.json(datas)
+    })
+
+})
+
+
 
 
 

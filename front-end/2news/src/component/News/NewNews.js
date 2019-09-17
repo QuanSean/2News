@@ -9,12 +9,14 @@ export default class NewNews extends Component {
                     <img src={this.props.image} alt="" />
                 </div>
                 <div className="post-content">
-                    <a href={this.props.link} style={{cursor:"pointer"}} className="post-title">{this.props.title}</a>
-                    {/* <div className="post-meta d-flex">
-                    <a href="#"><i className="fa fa-eye" aria-hidden="true" /> 1034</a>
+                    <a  href={this.props.link} style={{cursor:"pointer",marginBottom:"0"}} className="post-title">{this.props.title}</a>
+                    <p>{this.props.sourename}</p>
+
+                    <div className="post-meta d-flex">
+                    {/* <a href="#"><i className="fa fa-eye" aria-hidden="true" /> 1034</a>
                     <a href="#"><i className="fa fa-thumbs-o-up" aria-hidden="true" /> 834</a>
-                    <a href="#"><i className="fa fa-comments-o" aria-hidden="true" /> 234</a>
-                    </div> */}
+                    <a href="#"><i className="fa fa-comments-o" aria-hidden="true" /> 234</a> */}
+                    </div>
                 </div>
                 </div>
             </div>
