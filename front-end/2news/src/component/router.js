@@ -8,9 +8,7 @@ export default class router extends Component {
         return (
             <div>
                 <Route exact path="/" component={Index}/>
-                <Route exact path="/detail" component={Detail}/>
-                
-
+                <Route exact path="/category/:idcategory" component={Detail}/>
 
             </div>
         )

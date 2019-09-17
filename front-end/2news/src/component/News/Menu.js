@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default class Menu extends Component {
     render() {
         return (
@@ -11,17 +11,17 @@ export default class Menu extends Component {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+        <Link to="" className="nav-link" href="#">Trang chủ <span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item active">
         <a className="nav-link" href="#">Link</a>
       </li>
       <li className="nav-item dropdown active">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Thể loại
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="#">Action</a>
+          <Link to="/category/thoisu" className="dropdown-item" href="#">Thời sự</Link>
           <a className="dropdown-item" href="#">Another action</a>
           <div className="dropdown-divider" />
           <a className="dropdown-item" href="#">Something else here</a>

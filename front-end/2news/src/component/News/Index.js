@@ -7,6 +7,9 @@ import HotNews from './HotNews';
 import NewNews from './NewNews';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './style.scss'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Category from './Category';
+
 export default class Index extends Component {
     constructor(props) {
         super();
@@ -60,12 +63,7 @@ export default class Index extends Component {
 
         return (
 <div>      
-<div className="preloader d-flex align-items-center justify-content-center">
-  <div className="spinner">
-    <div className="double-bounce1" />
-    <div className="double-bounce2" />
-  </div>
-</div>
+
 <Menu/>
 
 
@@ -251,30 +249,7 @@ export default class Index extends Component {
         </div>
       </div>
       {/* Sidebar Widget */}
-      <div className="single-sidebar-widget p-30">
-        {/* Section Title */}
-        <div className="section-heading">
-          <h5>Thể loại</h5>
-        </div>
-        {/* Catagory Widget */}
-        <ul className="catagory-widgets">
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thời sự</span> <span>35</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thế giới</span> <span>30</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Văn hoá</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thể thao</span> <span>06</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Đời sống</span> <span>28</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Tài chính kinh doanh</span> <span>08</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Giới trẻ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Giáo dục</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Công nghệ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Sức khoẻ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Du lịch</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Xe</span> <span>13</span></a></li>
-
-
-
-        </ul>
-      </div>
+      <Category/>
       {/* Sidebar Widget */}
       <div className="single-sidebar-widget">
         <a href="#" className="add-img"><img src="img/bg-img/add2.png" alt="" /></a>

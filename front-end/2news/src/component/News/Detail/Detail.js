@@ -6,19 +6,23 @@ import SingleNews from '../SingleNews';
 import HotNews from '../HotNews';
 import NewNews from '../NewNews';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Category from '../Category';
 export default class Detail extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
-        this.state = {host:'http://localhost:2409/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[] };
+        this.state = {host:'http://localhost:2409/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[],category:'' };
       }
-
+      componentWillMount(){
+        
+      }
     componentDidMount(){
         setInterval(function(){
           window.location.reload(false);
         },100000);
+
         
-        fetch(this.state.host+'news', {
+        fetch("http://localhost:2409/news/"+this.props.match.params.idcategory, {
         method: 'GET',
             headers:{
             }
@@ -34,7 +38,7 @@ export default class Detail extends Component {
               }
           })
           .then(res=>res.json())
-          .then(data=>this.setState({dataNew:data},()=>console.log (this.state.dataNew)));
+          .then(data=>this.setState({dataNew:data}));
     
 
         fetch(this.state.host+'news/thoisuhome', {
@@ -43,7 +47,7 @@ export default class Detail extends Component {
               }
           })
           .then(res=>res.json())
-          .then(data=>this.setState({dataThoiSu:data},()=>console.log (this.state.dataThoiSu)));
+          .then(data=>this.setState({dataThoiSu:data}));
   
         fetch(this.state.host+'news/thethaohome', {
           method: 'GET',
@@ -51,7 +55,7 @@ export default class Detail extends Component {
               }
           })
           .then(res=>res.json())
-          .then(data=>this.setState({dataTheThao:data},()=>console.log (this.state.dataTheThao)));
+          .then(data=>this.setState({dataTheThao:data}));
     
     
     }
@@ -59,12 +63,7 @@ export default class Detail extends Component {
 
         return (
 <div>      
-<div className="preloader d-flex align-items-center justify-content-center">
-  <div className="spinner">
-    <div className="double-bounce1" />
-    <div className="double-bounce2" />
-  </div>
-</div>
+
 <Menu/>
 
 
@@ -91,7 +90,10 @@ export default class Detail extends Component {
                     <SingleNews sourename={item.sourename} image={item.image} link={item.link} title={item.title}/>
                   )
                 })
-              ):null
+              ):(                  
+                <div className="wrapper">
+                  <div className="card-loader card-loader--tabs" />
+                </div>)
             }
 
 
@@ -115,7 +117,10 @@ export default class Detail extends Component {
                     <SingleNews sourename={item.sourename}  image={item.image} link={item.link} title={item.title}/>
                   )
                 })
-              ):null
+              ):(                  
+              <div className="wrapper">
+                <div className="card-loader card-loader--tabs" />
+              </div>)
             }
             
 
@@ -144,11 +149,46 @@ export default class Detail extends Component {
         <div className="row">
           {
             this.state.load?(
-              this.state.dataNew.map((item)=>{
+              this.state.data.map((item)=>{
                 return <NewNews sourename={item.sourename}  title={item['title']} image={item['image']} link={item['link']}/>
 
               })
-            ):null
+            ):(
+              <div className='row' style={{width:"100%"}}>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6"> 
+                  <div className="wrapper">
+                    <div className="card-loader card-loader--tabs" />
+                  </div>
+                </div>
+              </div>
+
+
+            )
           }
         </div>
       </div>
@@ -172,30 +212,7 @@ export default class Detail extends Component {
         </div>
       </div>
       {/* Sidebar Widget */}
-      <div className="single-sidebar-widget p-30">
-        {/* Section Title */}
-        <div className="section-heading">
-          <h5>Thể loại</h5>
-        </div>
-        {/* Catagory Widget */}
-        <ul className="catagory-widgets">
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thời sự</span> <span>35</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thế giới</span> <span>30</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Văn hoá</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Thể thao</span> <span>06</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Đời sống</span> <span>28</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Tài chính kinh doanh</span> <span>08</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Giới trẻ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Giáo dục</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Công nghệ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Sức khoẻ</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Du lịch</span> <span>13</span></a></li>
-          <li><a href="#"><span><i className="fa fa-angle-double-right" aria-hidden="true" /> Xe</span> <span>13</span></a></li>
-
-
-
-        </ul>
-      </div>
+      <Category/>
       {/* Sidebar Widget */}
       <div className="single-sidebar-widget">
         <a href="#" className="add-img"><img src="img/bg-img/add2.png" alt="" /></a>
