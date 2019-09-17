@@ -1104,7 +1104,8 @@ input:focus {
     width: 100%;
     -webkit-transition-duration: 600ms;
     -o-transition-duration: 600ms;
-    transition-duration: 600ms; }
+    transition-duration: 600ms;
+   }
   .single-trending-post .post-content {
     position: absolute;
     bottom: 20px;

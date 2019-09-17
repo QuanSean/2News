@@ -37,7 +37,8 @@ const intervalHot = setInterval(function() {
                 else
                 {
                     var data= item.description.split('src="');
-                    var image=data[1].split('"')[0]
+                    var i=data[1].split('"')[0];
+                    var image = i.replace("180", "660");
                     var newsModel = new NewsModel ({
                         soure:1,
                         category:2,
@@ -65,34 +66,39 @@ const intervalHot = setInterval(function() {
     });
       }, 30000);
 //thanhnien
-var url="https://video.thanhnien.vn/rss/thoi-su.rss";
-// const interval = setInterval(function() {
-//     feedparser.parse(url).then(items => { 
-//         // var i=0;
-//         items.some(function(item,i){
-//             // data.push(item)
+var url="https://thanhnien.vn/rss/viet-nam.rss";
+const interval = setInterval(function() {
+    feedparser.parse(url).then(items => { 
+        // var i=0;
+        items.some(function(item,i){
+            // data.push(item)
+            var data= item.description.split('src="');
+            var i=data[1].split('"')[0];
+            var image = i.replace("180", "660");
+
+            // console.log(image);
+            var newsModel = new NewsModel ({
+                soure:1,
+                category:2,
+                type:1,
+                title:item.title,
+                link:item.link,
+                description:item.description,
+                pubDate:item.pubDate,
+                image:image,
+                hot:false
+            })
+            newsModel.save()
+            // newsModel.save();
+            if (i==5)
+            {
+                return true;
+            }
+            console.log(newsModel)
             
-//             var newsModel = new NewsModel ({
-//                 soure:1,
-//                 category:2,
-//                 type:1,
-//                 title:item.title,
-//                 link:item.link,
-//                 description:item.description,
-//                 pubDate:item.pubDate,
-//                 hot:false
-//             })
-//             newsModel.save()
-//             // newsModel.save();
-//             if (i==5)
-//             {
-//                 return true;
-//             }
-//             console.log(i)
-            
-//         });
-//     });
-//   }, 500000);
+        });
+    });
+  }, 90000);
 //   clearInterval(interval);
  
 
