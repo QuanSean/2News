@@ -24,6 +24,10 @@ const NewsModel = require ('./Model/News')
 //Thanh nien
 var thanhnien= require('./GetRss/Thanhnien')
 var thanhnienRss=thanhnien();
+
+//Tuoi tre
+var tuoitre= require('./GetRss/Tuoitre')
+var tuoitreRss=tuoitre();
 // thanhnien();
 // var url="https://thanhnien.vn/rss/viet-nam.rss";
 // feedparser.parse(url).then(items => { 
@@ -65,6 +69,8 @@ var thanhnienRss=thanhnien();
 // });
 
 
+
+
 mongoose.connect(
     "mongodb+srv://quansean1:150598bd!@2-news-p0npb.mongodb.net/data?retryWrites=true&w=majority",
     {   useNewUrlParser: true,
@@ -102,6 +108,8 @@ mongoose.connect(
 //         }
 //     })
 // })
+
+
 
 app.listen(process.env.PORT || 2409,(err, success)=>{
     if (err)

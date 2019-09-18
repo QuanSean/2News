@@ -3,31 +3,32 @@ const router = express.Router();
 const feedparser = require('feedparser-promised');
 const News= require('../Model/News')
 const NewsMoel= require('../Model/News')
+const NewsController = require('../Controller/News')
 router
 .get('/', (req, res)=>{
-    NewsMoel.find({hot:true,category:1},(err, result)=>{
-        res.json(result)
-    })
+    NewsController.getHot((err,result)=>{
+        if (res)
+        {
+            res.json(result)
+            // console.log(res)
+        }
+    });
 })
 
 .get ('/new', (req, res)=>{
-    NewsMoel.find({hot:false}, (err,result)=>{
-
-        var data= result.sort(function(a,b){
-            var c = new Date(a.pubDate);
-            var d = new Date(b.pubDate);
-            return d-c;
-            });
-        var datas=[]
-        for (i=0;i<data.length;i++)
+    NewsController.getNew((err,result)=>{
+        if (err)
         {
-            datas.push(data[i]);
-            if (i==19)
-            {
-                break;
-            }
+            res.json({
+                result: false,
+                detail: "query error"
+            })
         }
-       res.json(datas)
+        else
+        {
+            res.json(result)
+            console.log(result.length)
+        }
     })
 })
 
