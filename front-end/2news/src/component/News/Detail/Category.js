@@ -13,7 +13,7 @@ export default class Detail extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
-        this.state = {host:'http://localhost:2409/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[],category:'' };
+        this.state = {host:'https://news-hai.herokuapp.com/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[],category:'' };
       }
       componentWillMount(){
         
@@ -24,7 +24,7 @@ export default class Detail extends Component {
         },100000);
 
         
-        fetch("http://localhost:2409/news/"+this.props.match.params.idcategory, {
+        fetch("https://news-hai.herokuapp.com/news/"+this.props.match.params.idcategory, {
         method: 'GET',
             headers:{
             }
@@ -34,7 +34,7 @@ export default class Detail extends Component {
         
         
         
-        fetch(this.state.host+'news/new', {
+        fetch('https://news-hai.herokuapp.com/news/new', {
           method: 'GET',
               headers:{
               }
@@ -43,7 +43,7 @@ export default class Detail extends Component {
           .then(data=>this.setState({dataNew:data}));
     
 
-        fetch(this.state.host+'news/thoisuhome', {
+        fetch('https://news-hai.herokuapp.com/news/thoisuhome', {
           method: 'GET',
               headers:{
               }
@@ -51,7 +51,7 @@ export default class Detail extends Component {
           .then(res=>res.json())
           .then(data=>this.setState({dataThoiSu:data}));
   
-        fetch(this.state.host+'news/thethaohome', {
+        fetch('https://news-hai.herokuapp.com/news/thethaohome', {
           method: 'GET',
               headers:{
               }
@@ -66,7 +66,7 @@ export default class Detail extends Component {
         return (
 <div>      
 
-<Menu/>
+
 
 
 {/* ##### Header Area End ##### */}

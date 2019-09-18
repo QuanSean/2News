@@ -9,18 +9,19 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import './style.scss'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Category from './Category';
+import Email from './Email';
 
 export default class Index extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
-        this.state = {host:'http://localhost:2409/', data: [],load:false,loadNew:false, dataNew:[],dataThoiSu:[],dataTheThao:[] };
+        this.state = {host:'https://news-hai.herokuapp.com/', data: [],load:false,loadNew:false, dataNew:[],dataThoiSu:[],dataTheThao:[] };
       }
 
     componentDidMount(){
         setInterval(function(){
           window.location.reload(false);
-        },100000);
+        },900000);
         
         fetch(this.state.host+'news', {
         method: 'GET',
@@ -65,9 +66,6 @@ export default class Index extends Component {
 <div>      
 
 <Menu/>
-
-
-{/* ##### Header Area End ##### */}
 
 
  
@@ -253,20 +251,7 @@ export default class Index extends Component {
       {/* Sidebar Widget */}
   
       {/* Sidebar Widget */}
-      <div className="single-sidebar-widget p-30">
-        {/* Section Title */}
-        <div className="section-heading">
-          <h5>GÓP Ý</h5>
-        </div>
-        <div className="newsletter-form">
-          <p>Chúng tôi rất mong muốn có được ý kiến góp ý từ bạn</p>
-          <form action="#" method="get">
-            <input type="email" name="widget-search" placeholder="Vui lòng nhập email" />
-            <input type="text" name="widget-search" placeholder="Ý kiến đóng góp" />
-            <button type="submit" className="btn mag-btn w-100">Đồng ý</button>
-          </form>
-        </div>
-      </div>
+      <Email/>
     </div>
   </section>
   {/* ##### Mag Posts Area End ##### */}

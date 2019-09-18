@@ -7,14 +7,12 @@ import HotNews from '../HotNews';
 import NewNews from '../NewNews';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Category from '../Category';
+import Email from '../Email';
 export default class Detail extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
-        this.state = {host:'http://localhost:2409/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[],category:'' };
-      }
-      componentWillMount(){
-        
+        this.state = {host:'https://news-hai.herokuapp.com/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[],category:'' };
       }
     componentDidMount(){
         setInterval(function(){
@@ -22,7 +20,7 @@ export default class Detail extends Component {
         },100000);
 
         
-        fetch("http://localhost:2409/news/"+this.props.match.params.idcategory, {
+        fetch("https://news-hai.herokuapp.com/news/"+this.props.match.params.idcategory, {
         method: 'GET',
             headers:{
             }
@@ -220,20 +218,7 @@ export default class Detail extends Component {
       {/* Sidebar Widget */}
   
       {/* Sidebar Widget */}
-      <div className="single-sidebar-widget p-30">
-        {/* Section Title */}
-        <div className="section-heading">
-          <h5>GÓP Ý</h5>
-        </div>
-        <div className="newsletter-form">
-          <p>Chúng tôi rất mong muốn có được ý kiến góp ý từ bạn</p>
-          <form action="#" method="get">
-            <input type="email" name="widget-search" placeholder="Vui lòng nhập email" />
-            <input type="text" name="widget-search" placeholder="Ý kiến đóng góp" />
-            <button type="submit" className="btn mag-btn w-100">Đồng ý</button>
-          </form>
-        </div>
-      </div>
+      <Email/>
     </div>
   </section>
   {/* ##### Mag Posts Area End ##### */}
