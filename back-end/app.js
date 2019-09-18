@@ -25,51 +25,14 @@ const NewsModel = require ('./Model/News')
 var thanhnien= require('./GetRss/Thanhnien')
 var thanhnienRss=thanhnien();
 
-//Tuoi tre
+// //Tuoi tre
 var tuoitre= require('./GetRss/Tuoitre')
 var tuoitreRss=tuoitre();
-// thanhnien();
-// var url="https://thanhnien.vn/rss/viet-nam.rss";
-// feedparser.parse(url).then(items => { 
-//     items.some(function(item,i){
 
-//                 var data= item.description.split('src="');
-//                 var im=data[1].split('"')[0];
-//                 var image = im.replace("180", "660");
-    
-//                 // console.log(image);
-//                 var newsModel = new NewsModel ({
-//                     soure:1,
-//                     sourename: "Thanh niên",
-//                     category:3,
-//                     type:1,
-//                     title:item.title,
-//                     link:item.link,
-//                     description:item.description,
-//                     pubDate:item.pubDate,
-//                     image:image,
-//                     hot:false
-//                 })
-//                 newsModel.save()
-//                 console.log(item.title)                                     
-            
+// //Nguoi lao dong
 
-
-//         // data.push(item)
-       
-//         // newsModel.save()
-//         // newsModel.save();
-//         if (i==5)
-//         {
-//             return true;
-//         }
-//         // console.log(i)
-        
-//     });
-// });
-
-
-
+var nguoilaodong= require('./GetRss/Nguoilaodong')
+var nguoilaodongRss=nguoilaodong();
 
 mongoose.connect(
     "mongodb+srv://quansean1:150598bd!@2-news-p0npb.mongodb.net/data?retryWrites=true&w=majority",

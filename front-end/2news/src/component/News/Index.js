@@ -14,7 +14,7 @@ export default class Index extends Component {
     constructor(props) {
         super();
         // Don't call this.setState() here!
-        this.state = {host:'http://localhost:2409/', data: [],load:false, dataNew:[],dataThoiSu:[],dataTheThao:[] };
+        this.state = {host:'http://localhost:2409/', data: [],load:false,loadNew:false, dataNew:[],dataThoiSu:[],dataTheThao:[] };
       }
 
     componentDidMount(){
@@ -38,7 +38,7 @@ export default class Index extends Component {
               }
           })
           .then(res=>res.json())
-          .then(data=>this.setState({dataNew:data},()=>console.log (this.state.dataNew)));
+          .then(data=>this.setState({dataNew:data,loadNew:true},()=>console.log (this.state.dataNew)));
     
 
         fetch(this.state.host+'news/thoisuhome', {
@@ -165,11 +165,7 @@ export default class Index extends Component {
                 </div>
 
               )
-             
-
             }
-
-            {/* Single Trending Post */}
 
         </div>
       </div>
@@ -185,7 +181,7 @@ export default class Index extends Component {
         </div>
         <div className="row">
           {
-            this.state.load?(
+            this.state.loadNew?(
               this.state.dataNew.map((item)=>{
                 return <NewNews sourename={item.sourename}  title={item['title']} image={item['image']} link={item['link']}/>
 

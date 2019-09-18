@@ -52,7 +52,7 @@ function getRss(){
                 
             });
         });
-      }, 90001);
+      }, 100001);
     //   4 Thế giới
     var urlThegioi="https://tuoitre.vn/rss/the-gioi.rss";
     const intervalThegioi = setInterval(function() {
@@ -86,15 +86,9 @@ function getRss(){
                             hot:false
                         })   
                         newsModel.save();
-                        console.log(newsModel)
 
                     }
                 })
-    
-    
-                // data.push(item)
-               
-                // newsModel.save()
                 if (i==5)
                 {
                     return true;
@@ -103,7 +97,7 @@ function getRss(){
                 
             });
         });
-      }, 90002);
+      }, 100002);
     //   5 Văn hoá
     var urlVanhoa="https://tuoitre.vn/rss/van-hoa.rss";
     const intervalVanhoa = setInterval(function() {
@@ -152,7 +146,7 @@ function getRss(){
                 
             });
         });
-      }, 90003);
+      }, 100003);
     //   6 Thể thao
     var urlThethao="https://tuoitre.vn/rss/the-thao.rss";
     const intervalThethao = setInterval(function() {
@@ -202,7 +196,7 @@ function getRss(){
                 
             });
         });
-      }, 90004);
+      }, 100004);
     //   7 Đời sống
  
     //   8 Tài chính
@@ -254,7 +248,7 @@ function getRss(){
                 
             });
         });
-      }, 90005);
+      }, 100005);
     //   9 Giới trẻ
     var urlGioitre="https://tuoitre.vn/rss/nhip-song-tre.rss";
     const intervalGioitre = setInterval(function() {
@@ -304,7 +298,7 @@ function getRss(){
                 
             });
         });
-      }, 90006);
+      }, 100006);
     //   10 Giáo dục
     var urlGiaoduc="https://tuoitre.vn/rss/giao-duc.rss";
     const intervalGiaoduc = setInterval(function() {
@@ -354,7 +348,7 @@ function getRss(){
                 
             });
         });
-      }, 90007);
+      }, 100007);
     //   11 Công nghệ
     var urlCongnghe="https://tuoitre.vn/rss/nhip-song-so.rss";
     const intervalCongnghe = setInterval(function() {
@@ -404,7 +398,7 @@ function getRss(){
                 
             });
         });
-      }, 90008);
+      }, 100008);
     //   12 Game
    
     //   13 Sức khoẻ
@@ -455,7 +449,7 @@ function getRss(){
                 
             });
         });
-      }, 90009);
+      }, 100009);
     //   14 Du lịch	
     var urlDulich="https://tuoitre.vn/rss/du-lich.rss";
     const intervalDulich = setInterval(function() {
@@ -506,7 +500,7 @@ function getRss(){
                 
             });
         });
-      }, 90010);
+      }, 100010);
     //   15 Xe
     var urlXe="https://tuoitre.vn/rss/xe.rss";
     const intervalXe= setInterval(function() {
@@ -555,7 +549,7 @@ function getRss(){
                 
             });
         });
-      }, 90011);
+      }, 100011);
   
 }
 module.exports=getRss

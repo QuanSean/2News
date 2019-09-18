@@ -21,7 +21,7 @@ const intervalHot = setInterval(function() {
                         // title=result[0].title;
                         if (item.title==result[0].title)
                         {
-                            console.log("No")
+                            console.log("Noaa")
                         }
                         else
                         {
@@ -55,7 +55,6 @@ const intervalHot = setInterval(function() {
             {
                 return true;
             }
-            console.log (item.title)
         });
     });
       }, 30000);

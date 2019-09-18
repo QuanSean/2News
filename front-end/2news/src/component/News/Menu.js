@@ -13,7 +13,7 @@ export default class Menu extends Component {
       <li className="nav-item active">
         <Link to="" className="nav-link" href="#">Trang chủ <span className="sr-only">(current)</span></Link>
       </li>
-      <li className="nav-item active">
+      {/* <li className="nav-item active">
         <a className="nav-link" href="#">Link</a>
       </li>
       <li className="nav-item dropdown active">
@@ -29,7 +29,7 @@ export default class Menu extends Component {
       </li>
       <li className="nav-item active">
         <a className="nav-link disabled" href="#">Disabled</a>
-      </li>
+      </li> */}
     </ul>
     <form className="form-inline my-2 my-lg-0">
       <input className="form-control mr-sm-2" style={{marginBottom:"0", fontSize:"1.2em",padding:"15px"}} type="search" placeholder="Search" aria-label="Search" />
